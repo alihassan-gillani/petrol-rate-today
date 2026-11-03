@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Price Trend – Fuel Prices Pakistan</title>
+<meta name="description" content="OGRA-notified petrol, diesel and kerosene prices in Pakistan per litre, with daily history and monthly averages.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><i></i><span id="bar"></span><button id="theme" aria-label="Toggle dark mode">☾</button></div></div>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mk">⛽</span><span><b>Fuel<em>Prices</em> <span class="badge">OGRA DATA</span></b><small>Pakistan Fuel Rates</small></span></a>
+  <nav id="nav"><a href="index.html">Home</a><a href="trend.html" class="on">Trend</a><a href="monthly.html">Monthly</a><a href="history.html">History</a><a href="faq.html">FAQ</a></nav>
+  <a class="cta" href="https://www.ogra.org.pk/price-publications" target="_blank" rel="noopener">OGRA Notifications</a>
+</div></header>
+
+<main class="wrap">
+  <a class="back" href="index.html">← Today's petrol price</a>
+      <section class="panel">
+      <h2>Price trend <span>per litre, PKR · daily</span></h2>
+      <svg id="chart" viewBox="0 0 700 280" role="img" aria-label="Petrol and diesel price chart"></svg>
+      <div class="legend" id="legend"></div>
+    </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Fuel Prices · Data: <a href="https://www.ogra.org.pk/price-publications" style="color:inherit">OGRA price publications</a></div></footer>
+
+<script src="prices.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

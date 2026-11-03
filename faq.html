@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ – Fuel Prices Pakistan</title>
+<meta name="description" content="OGRA-notified petrol, diesel and kerosene prices in Pakistan per litre, with daily history and monthly averages.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><i></i><span id="bar"></span><button id="theme" aria-label="Toggle dark mode">☾</button></div></div>
+<header><div class="wrap">
+  <a class="logo" href="index.html"><span class="mk">⛽</span><span><b>Fuel<em>Prices</em> <span class="badge">OGRA DATA</span></b><small>Pakistan Fuel Rates</small></span></a>
+  <nav id="nav"><a href="index.html">Home</a><a href="trend.html">Trend</a><a href="monthly.html">Monthly</a><a href="history.html">History</a><a href="faq.html" class="on">FAQ</a></nav>
+  <a class="cta" href="https://www.ogra.org.pk/price-publications" target="_blank" rel="noopener">OGRA Notifications</a>
+</div></header>
+
+<main class="wrap">
+  <a class="back" href="index.html">← Today's petrol price</a>
+    <h2 class="sec" style="margin-top:0">FAQ</h2>
+  <details><summary>How often do petrol prices change in Pakistan?</summary><p>OGRA now notifies petrol and diesel prices every day, based on a rolling seven-working-day average of international prices and the dollar rate. A new price takes effect from 00:00 on the day shown.</p></details>
+  <details><summary>Where do these prices come from?</summary><p>From OGRA's own daily price publications. Each price on this page links to the original OGRA PDF.</p></details>
+  <details><summary>How is the monthly average worked out?</summary><p>Each calendar day gets the price in force that day (Sundays and holidays carry the previous price). The average is the total of those daily prices divided by the days counted. The current month counts days up to today.</p></details>
+  <details><summary>Why is kerosene shown differently?</summary><p>OGRA notifies kerosene (ex-depot price) in a separate weekly notification, not in the daily petrol and diesel sheet. The price shown is the latest weekly notification.</p></details>
+  <details><summary>Is the price the same in every city?</summary><p>Petrol and diesel use a uniform national price (excluding secondary freight to the pump). Remote areas may pay slightly more because of transport costs.</p></details>
+  <p class="note">Information only. Always confirm at your fuel station. Not affiliated with OGRA or the Government of Pakistan.</p>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Fuel Prices · Data: <a href="https://www.ogra.org.pk/price-publications" style="color:inherit">OGRA price publications</a></div></footer>
+
+<script src="prices.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
