@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Petrol Rate Today in Pakistan – OGRA Petrol &amp; Diesel Prices</title>
+<meta name="description" content="Today's OGRA-notified petrol, diesel and kerosene prices in Pakistan per litre, with daily history and monthly averages.">
+<link rel="canonical" href="https://example.pk/">
+<style>
+:root{--bg:#eef1f5;--card:#fff;--ink:#14213d;--mute:#5b6577;--line:#e3e8ef;--acc:#0a7d4f;--hero:#0f2a22;--up:#c62828;--down:#0a7d4f}
+@media(prefers-color-scheme:dark){:root{--bg:#0b111b;--card:#151e2e;--ink:#eef2f8;--mute:#9aa7bd;--line:#25314a;--acc:#34d399;--hero:#08140f;--up:#ff6b6b;--down:#34d399}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;z-index:5;background:var(--hero);color:#fff}
+nav .wrap{display:flex;align-items:center;gap:20px;height:52px;overflow-x:auto;white-space:nowrap}
+nav b{margin-right:auto;font-size:1.05rem}
+nav a{color:#cfe9de;text-decoration:none;font-size:.9rem}
+nav a:hover{color:#fff}
+.hero{background:var(--hero);color:#fff;padding:28px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.hero h1{margin:0 0 6px;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.15}
+.hero p{margin:0;color:#b9d3c8}
+.big{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px}
+.big .n{color:#b9d3c8;font-size:.9rem}
+.big .p{font-size:clamp(2.6rem,8vw,3.8rem);font-weight:800;line-height:1.1}
+.big .p small{font-size:1rem;font-weight:400;color:#b9d3c8}
+.big .chg{opacity:.9}
+.big a,.card a{color:inherit;opacity:.8;font-size:.8rem}
+main{margin-top:-48px;padding-bottom:48px}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card .n{color:var(--mute);font-size:.9rem}
+.card .p{font-size:1.8rem;font-weight:700;margin:2px 0}
+.card .p small{font-size:.85rem;font-weight:400;color:var(--mute)}
+.card a{color:var(--mute)}
+.chg{font-size:.88rem;font-weight:600}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--mute)}
+.cols{display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-top:16px;align-items:start}
+.panel h2{margin:0 0 12px;font-size:1.1rem}
+.panel h2 span{font-weight:400;font-size:.85rem;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:9px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.78rem;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+td a{color:var(--acc)}
+.tw{overflow-x:auto}
+.scroll{max-height:420px;overflow:auto}
+svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--mute);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:600}
+.note{font-size:.82rem;color:var(--mute)}
+h2.sec{margin:28px 0 12px;font-size:1.2rem}
+footer{border-top:1px solid var(--line);padding:20px 0;color:var(--mute);font-size:.85rem}
+@media(max-width:800px){.hero .wrap,.cols,.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>⛽ Petrol Rate Today</b><a href="#trend">Trend</a><a href="#monthly">Monthly average</a><a href="#history">History</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="hero"><div class="wrap">
+  <div><h1>Petrol Rate Today in Pakistan</h1><p id="upd"></p></div>
+  <div class="big" id="big"></div>
+</div></section>
+
+<main class="wrap">
+  <div class="row" id="cards"></div>
+
+  <div class="cols">
+    <section class="panel" id="trend">
+      <h2>Price trend <span>(per litre, PKR · daily)</span></h2>
+      <svg id="chart" viewBox="0 0 700 280" role="img" aria-label="Petrol and diesel price chart"></svg>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <section class="panel" id="monthly">
+      <h2>Monthly average <span>(PKR / litre)</span></h2>
+      <div class="tw"><table id="avg"></table></div>
+      <p class="note" id="avgnote"></p>
+    </section>
+  </div>
+
+  <section class="panel" id="history" style="margin-top:16px">
+    <h2>Daily price history <span>(OGRA daily notifications)</span></h2>
+    <div class="tw scroll"><table id="hist"></table></div>
+  </section>
+
+  <h2 class="sec" id="faq">FAQ</h2>
+  <details><summary>How often do petrol prices change in Pakistan?</summary><p>OGRA now notifies petrol and diesel prices every day, based on a rolling seven-working-day average of international prices and the dollar rate. A new price takes effect from 00:00 on the day shown.</p></details>
+  <details><summary>Where do these prices come from?</summary><p>From OGRA's own daily price publications. Each price on this page links to the original OGRA PDF.</p></details>
+  <details><summary>How is the monthly average worked out?</summary><p>Each calendar day gets the price in force that day (Sundays and holidays carry the previous price). The average is the total of those daily prices divided by the days counted. The current month counts days up to today.</p></details>
+  <details><summary>Why is kerosene shown differently?</summary><p>OGRA notifies kerosene (ex-depot price) in a separate weekly notification, not in the daily petrol and diesel sheet. The price shown is the latest weekly notification.</p></details>
+  <details><summary>Is the price the same in every city?</summary><p>Petrol and diesel use a uniform national price (excluding secondary freight to the pump). Remote areas may pay slightly more because of transport costs.</p></details>
+  <p class="note">Information only. Always confirm at your fuel station. Not affiliated with OGRA or the Government of Pakistan.</p>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Petrol Rate Today · Data: <a href="https://www.ogra.org.pk/price-publications" style="color:inherit">OGRA price publications</a></div></footer>
+
+<script src="prices.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const fmt = n => n.toFixed(2);
+const D = s => new Date(s+"T00:00:00");
+const fdate = d => D(d).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+const FUELS = [{key:"petrol",name:"Petrol",color:"#0a7d4f"},{key:"diesel",name:"High Speed Diesel",short:"Diesel",color:"#2563eb"}];
+$("yr").textContent = new Date().getFullYear();
+
+if(!window.PRICES || !PRICES.days.length){
+  document.querySelector("main").innerHTML = '<div class="panel">Prices could not be loaded. Please try again later.</div>';
+} else {
+const DAYS = PRICES.days;               // newest first
+const ASC = DAYS.slice().reverse();
+const cur = DAYS[0], prev = DAYS[1];
+
+$("upd").textContent = "OGRA notified price effective " + fdate(cur.date) + " · PKR per litre";
+
+function chg(f){
+  const d = cur[f.key]-prev[f.key], cls = d>0?"up":d<0?"down":"flat", ar = d>0?"▲":d<0?"▼":"–";
+  return `<div class="chg ${cls}">${ar} ${fmt(Math.abs(d))} vs ${fdate(prev.date)}</div>`;
+}
+$("big").innerHTML = `<div class="n">Petrol price today</div><div class="p">${fmt(cur.petrol)} <small>PKR / litre</small></div>${chg(FUELS[0]).replace("chg ","chg ").replace(/ (up|down|flat)"/,'"')}<a href="${cur.source}" target="_blank" rel="noopener">Source: OGRA notification</a>`;
+const ker = (PRICES.kerosene||[]).slice().sort((a,b)=>b.date<a.date?-1:1)[0];
+$("cards").innerHTML =
+  `<div class="card"><div class="n">High Speed Diesel</div><div class="p">${fmt(cur.diesel)} <small>PKR</small></div>${chg(FUELS[1])}<a href="${cur.source}" target="_blank" rel="noopener">Source: OGRA notification</a></div>` +
+  (ker ? `<div class="card"><div class="n">Kerosene Oil (ex-depot, weekly)</div><div class="p">${fmt(ker.price)} <small>PKR</small></div><div class="chg flat">Effective ${fdate(ker.date)}</div><a href="${ker.source}" target="_blank" rel="noopener">Source: OGRA notification</a></div>` : "");
+
+// history table (all days, newest first)
+$("hist").innerHTML = "<tr><th>Effective date</th><th>Petrol</th><th>Diesel</th><th>Source</th></tr>" +
+  DAYS.map(r=>`<tr><td>${fdate(r.date)}</td><td>${fmt(r.petrol)}</td><td>${fmt(r.diesel)}</td><td><a href="${r.source}" target="_blank" rel="noopener">PDF</a></td></tr>`).join("");
+
+// chart
+(function(){
+  const W=700,H=280,L=44,R=14,T=12,B=30, data=ASC;
+  const vals = data.flatMap(r=>FUELS.map(f=>r[f.key]));
+  const lo = Math.floor(Math.min(...vals)/10)*10, hi = Math.ceil(Math.max(...vals)/10)*10;
+  const x = i => L + i*(W-L-R)/(data.length-1), y = v => T + (hi-v)*(H-T-B)/(hi-lo);
+  let s = "";
+  for(let k=0;k<=4;k++){ const v=lo+k*(hi-lo)/4;
+    s += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="currentColor" opacity=".12"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="currentColor" opacity=".6">${Math.round(v)}</text>`; }
+  const step = Math.ceil(data.length/6);
+  data.forEach((r,i)=>{ if(i%step===0) s += `<text x="${x(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".6">${D(r.date).toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</text>`; });
+  FUELS.forEach(f=>{
+    s += `<polyline points="${data.map((r,i)=>x(i)+","+y(r[f.key])).join(" ")}" fill="none" stroke="${f.color}" stroke-width="2" stroke-linejoin="round"/>`;
+    data.forEach((r,i)=>{ s += `<circle cx="${x(i)}" cy="${y(r[f.key])}" r="6" fill="${f.color}" opacity="0"><title>${f.name} ${fdate(r.date)}: ${fmt(r[f.key])}</title></circle>`; });
+  });
+  $("chart").innerHTML = s; $("chart").style.color = "var(--ink)";
+  $("legend").innerHTML = FUELS.map(f=>`<span><i style="background:${f.color}"></i>${f.name}</span>`).join("");
+})();
+
+// monthly average: every calendar day takes the latest price on or before it
+(function(){
+  const first = D(ASC[0].date), end = D(cur.date);
+  const byDate = Object.fromEntries(ASC.map(r=>[r.date,r]));
+  const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  const rows = {}; let last = ASC[0];
+  for(let d=new Date(first); d<=end; d.setDate(d.getDate()+1)){
+    last = byDate[iso(d)] || last;
+    const k = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+    const m = rows[k] || (rows[k]={k, n:0, petrol:0, diesel:0, first:new Date(d), d:new Date(d)});
+    m.n++; m.petrol+=last.petrol; m.diesel+=last.diesel;
+  }
+  const list = Object.values(rows).sort((a,b)=>b.k<a.k?-1:1);
+  const lastMonth = iso(end).slice(0,7);
+  $("avg").innerHTML = "<tr><th>Month</th><th>Petrol</th><th>Diesel</th></tr>" + list.map((m,i)=>{
+    const p=list[i+1], dp = p? m.petrol/m.n - p.petrol/p.n : null;
+    const partial = m.k===lastMonth || m.k===list[list.length-1].k;
+    const label = m.d.toLocaleDateString("en-GB",{month:"short",year:"numeric"}) + (partial?" *":"");
+    return `<tr><td>${label}</td><td>${fmt(m.petrol/m.n)}${dp!=null?` <span class="chg ${dp>0?"up":dp<0?"down":"flat"}">${dp>0?"▲":dp<0?"▼":"–"}</span>`:""}</td><td>${fmt(m.diesel/m.n)}</td></tr>`;
+  }).join("");
+  $("avgnote").textContent = "* Partial month: current month counts days up to " + fdate(cur.date) + "; the first month counts from " + fdate(ASC[0].date) + ". Arrow = petrol vs previous month.";
+})();
+}
+</script>
+</body>
+</html>
