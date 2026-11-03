@@ -55,7 +55,7 @@ main{padding:36px 0 56px}
 .card .v{font-size:2rem;margin:2px 0}
 .card .v small{font-size:.9rem;color:var(--mute);font-family:system-ui,sans-serif;font-weight:500}
 .card a,.sheet a.src{color:var(--mute);font-size:.82rem}
-.cols{display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-top:20px;align-items:start}
+[hidden]{display:none!important}
 .panel h2{margin:0 0 14px;font-size:1.15rem;letter-spacing:-.01em}
 .panel h2 span{font-weight:500;font-size:.85rem;color:var(--mute)}
 table{width:100%;border-collapse:collapse;font-size:.92rem}
@@ -65,7 +65,7 @@ th{font-size:.74rem;color:var(--mute);font-weight:700;text-transform:uppercase;l
 tr:last-child td{border-bottom:0}
 td a{color:var(--acc);font-weight:600}
 td.n{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace}
-.tw{overflow-x:auto}.scroll{max-height:440px;overflow:auto}
+.tw{overflow-x:auto}
 svg{width:100%;height:auto;display:block}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--mute);margin-top:6px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
@@ -74,19 +74,20 @@ summary{cursor:pointer;font-weight:700}
 .note{font-size:.82rem;color:var(--mute)}
 h2.sec{margin:32px 0 14px;font-size:1.3rem;letter-spacing:-.02em}
 footer{border-top:1px solid var(--line);background:var(--card);padding:22px 0;color:var(--mute);font-size:.85rem}
-@media(max-width:860px){nav,.cta{display:none}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.row,.cols{grid-template-columns:1fr}.sheet{padding:24px 20px}}
+@media(max-width:860px){.cta{display:none}header .wrap{height:auto;flex-wrap:wrap;gap:0 16px;padding-top:10px}nav{order:3;width:100%;margin:0;gap:22px}nav a{padding:10px 0 8px}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.row{grid-template-columns:1fr}.sheet{padding:24px 20px}}
 </style>
 </head>
 <body>
 <div class="topbar"><div class="wrap"><i></i><span id="bar"></span><button id="theme" aria-label="Toggle dark mode">☾</button></div></div>
 <header><div class="wrap">
-  <a class="logo" href="#top"><span class="mk">⛽</span><span><b>Fuel<em>Prices</em> <span class="badge">OGRA DATA</span></b><small>Pakistan Fuel Rates</small></span></a>
-  <nav><a href="#top" class="on">Home</a><a href="#trend">Trend</a><a href="#monthly">Monthly</a><a href="#history">History</a><a href="#faq">FAQ</a></nav>
+  <a class="logo" href="#home"><span class="mk">⛽</span><span><b>Fuel<em>Prices</em> <span class="badge">OGRA DATA</span></b><small>Pakistan Fuel Rates</small></span></a>
+  <nav id="nav"><a href="#home">Home</a><a href="#trend">Trend</a><a href="#monthly">Monthly</a><a href="#history">History</a><a href="#faq">FAQ</a></nav>
   <a class="cta" href="https://www.ogra.org.pk/price-publications" target="_blank" rel="noopener">OGRA Notifications</a>
 </div></header>
 
 <main class="wrap" id="top">
-  <a class="back" href="#top">← Today's petrol price</a>
+  <a class="back" id="back" href="#home" hidden>← Today's petrol price</a>
+  <div data-view="home">
   <section class="sheet">
     <p class="eyebrow">Price today</p>
     <h1>Petrol Price in Pakistan Today</h1>
@@ -96,32 +97,40 @@ footer{border-top:1px solid var(--line);background:var(--card);padding:22px 0;co
   </section>
 
   <div class="row" id="cards"></div>
+  </div>
 
-  <div class="cols">
-    <section class="panel" id="trend">
+  <div data-view="trend" hidden>
+    <section class="panel">
       <h2>Price trend <span>per litre, PKR · daily</span></h2>
       <svg id="chart" viewBox="0 0 700 280" role="img" aria-label="Petrol and diesel price chart"></svg>
       <div class="legend" id="legend"></div>
     </section>
-    <section class="panel" id="monthly">
+  </div>
+
+  <div data-view="monthly" hidden>
+    <section class="panel">
       <h2>Monthly average <span>PKR / litre</span></h2>
       <div class="tw"><table id="avg"></table></div>
       <p class="note" id="avgnote"></p>
     </section>
   </div>
 
-  <section class="panel" id="history" style="margin-top:20px">
+  <div data-view="history" hidden>
+  <section class="panel">
     <h2>Daily price history <span>OGRA daily notifications</span></h2>
     <div class="tw scroll"><table id="hist"></table></div>
   </section>
+  </div>
 
-  <h2 class="sec" id="faq">FAQ</h2>
+  <div data-view="faq" hidden>
+  <h2 class="sec" style="margin-top:0">FAQ</h2>
   <details><summary>How often do petrol prices change in Pakistan?</summary><p>OGRA now notifies petrol and diesel prices every day, based on a rolling seven-working-day average of international prices and the dollar rate. A new price takes effect from 00:00 on the day shown.</p></details>
   <details><summary>Where do these prices come from?</summary><p>From OGRA's own daily price publications. Each price on this page links to the original OGRA PDF.</p></details>
   <details><summary>How is the monthly average worked out?</summary><p>Each calendar day gets the price in force that day (Sundays and holidays carry the previous price). The average is the total of those daily prices divided by the days counted. The current month counts days up to today.</p></details>
   <details><summary>Why is kerosene shown differently?</summary><p>OGRA notifies kerosene (ex-depot price) in a separate weekly notification, not in the daily petrol and diesel sheet. The price shown is the latest weekly notification.</p></details>
   <details><summary>Is the price the same in every city?</summary><p>Petrol and diesel use a uniform national price (excluding secondary freight to the pump). Remote areas may pay slightly more because of transport costs.</p></details>
   <p class="note">Information only. Always confirm at your fuel station. Not affiliated with OGRA or the Government of Pakistan.</p>
+  </div>
 </main>
 
 <footer><div class="wrap">© <span id="yr"></span> Fuel Prices · Data: <a href="https://www.ogra.org.pk/price-publications" style="color:inherit">OGRA price publications</a></div></footer>
@@ -143,6 +152,20 @@ $("yr").textContent = new Date().getFullYear();
   const apply = v => { root.dataset.theme = v; btn.textContent = v==="dark" ? "☀" : "☾"; try{ localStorage.setItem("theme",v); }catch(e){} };
   apply(t);
   btn.onclick = () => apply(root.dataset.theme==="dark" ? "light" : "dark");
+})();
+
+// page views: #home #trend #monthly #history #faq
+(function(){
+  const views = [...document.querySelectorAll("[data-view]")], links = [...document.querySelectorAll("#nav a")];
+  function show(){
+    let v = location.hash.slice(1); if(!views.some(x=>x.dataset.view===v)) v = "home";
+    views.forEach(x=>x.hidden = x.dataset.view!==v);
+    links.forEach(a=>a.classList.toggle("on", a.getAttribute("href")==="#"+v));
+    $("back").hidden = v==="home";
+    document.title = (v==="home" ? "Fuel Prices Pakistan – Petrol Rate Today (OGRA)" : {trend:"Price Trend",monthly:"Monthly Average",history:"Price History",faq:"FAQ"}[v] + " – Fuel Prices Pakistan");
+    scrollTo(0,0);
+  }
+  addEventListener("hashchange", show); show();
 })();
 
 if(!window.PRICES || !PRICES.days.length){
