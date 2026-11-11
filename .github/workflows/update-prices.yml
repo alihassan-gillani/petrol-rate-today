@@ -1,8 +1,6 @@
+# Manual only: OGRA blocks GitHub-hosted runners (HTTP 403). Daily updates run on the PC via run_update.bat.
 name: Update OGRA prices
 on:
-  schedule:
-    - cron: "30 19 * * *"   # 00:30 Pakistan time, just after the new price takes effect
-    - cron: "30 3 * * *"    # 08:30 Pakistan time, retry in case OGRA published late
   workflow_dispatch:
 permissions:
   contents: write
