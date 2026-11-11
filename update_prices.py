@@ -38,7 +38,7 @@ def total(text, label):
     i = text.find(label)
     if i < 0:
         return None
-    m = re.search(r"RS/LTR\s+[A-Z]\s*=\s*\{[^}]*\}\s+(\d+\.\d+)", text[i:])
+    m = re.search(r"RS/LTR\s+[A-Z]\s*(?:=\s*\{[^}]*\})?\s+(\d+\.\d+)", text[i:])
     return float(m.group(1)) if m else None
 
 
@@ -52,7 +52,13 @@ def main():
     old = json.loads(OUT.read_text("utf-8")) if OUT.exists() else {"days": []}
     days = {d["date"]: d for d in old["days"]}
     errors = []
-    for date, url, fid in listing():
+    try:
+        entries = listing()
+    except Exception as e:  # e.g. OGRA refusing this network; say so plainly in the log
+        sys.exit(f"Could not read {LIST_URL}: {e!r}")
+    if not entries:
+        sys.exit(f"No entries found on {LIST_URL} (page layout changed or blocked)")
+    for date, url, fid in entries:
         if date < "2026-07-01" or date in days:
             continue
         pdf = CACHE / f"{fid}.pdf"

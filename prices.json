@@ -1,6 +1,36 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-11",
  "days": [
+  {
+   "date": "2026-11-11",
+   "petrol": 338.0,
+   "diesel": 371.0,
+   "source": "https://www.ogra.org.pk/download/18121?lang=en"
+  },
+  {
+   "date": "2026-11-07",
+   "petrol": 346.0,
+   "diesel": 378.0,
+   "source": "https://www.ogra.org.pk/download/18071?lang=en"
+  },
+  {
+   "date": "2026-11-06",
+   "petrol": 352.59,
+   "diesel": 382.25,
+   "source": "https://www.ogra.org.pk/download/18027?lang=en"
+  },
+  {
+   "date": "2026-11-05",
+   "petrol": 362.0,
+   "diesel": 387.81,
+   "source": "https://www.ogra.org.pk/download/17955?lang=en"
+  },
+  {
+   "date": "2026-11-04",
+   "petrol": 369.06,
+   "diesel": 391.52,
+   "source": "https://www.ogra.org.pk/download/17909?lang=en"
+  },
   {
    "date": "2026-11-03",
    "petrol": 374.51,
