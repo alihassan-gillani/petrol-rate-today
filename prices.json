@@ -1,6 +1,12 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "days": [
+  {
+   "date": "2026-11-14",
+   "petrol": 330.0,
+   "diesel": 360.0,
+   "source": "https://www.ogra.org.pk/download/18254?lang=en"
+  },
   {
    "date": "2026-11-13",
    "petrol": 332.0,
