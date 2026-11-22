@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-22",
  "days": [
   {
    "date": "2026-11-18",
@@ -502,6 +502,7 @@
   }
  ],
  "errors": [
+  "2026-11-21: could not find totals in 18473",
   "2026-11-20: could not find totals in 18432",
   "2026-11-19: could not find totals in 18393"
  ]
