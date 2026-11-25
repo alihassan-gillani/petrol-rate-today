@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-25",
  "days": [
   {
    "date": "2026-11-18",
@@ -502,6 +502,8 @@
   }
  ],
  "errors": [
+  "2026-11-25: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "2026-11-24: <urlopen error [Errno 11001] getaddrinfo failed>",
   "2026-11-21: could not find totals in 18473",
   "2026-11-20: could not find totals in 18432",
   "2026-11-19: could not find totals in 18393"
