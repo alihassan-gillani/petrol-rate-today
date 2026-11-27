@@ -1,6 +1,12 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-27",
  "days": [
+  {
+   "date": "2026-11-25",
+   "petrol": 318.0,
+   "diesel": 353.0,
+   "source": "https://www.ogra.org.pk/download/18566?lang=en"
+  },
   {
    "date": "2026-11-18",
    "petrol": 325.0,
@@ -502,8 +508,10 @@
   }
  ],
  "errors": [
-  "2026-11-25: [WinError 10054] An existing connection was forcibly closed by the remote host",
-  "2026-11-24: <urlopen error [Errno 11001] getaddrinfo failed>",
+  "2026-11-27: could not find totals in 18662",
+  "2026-11-27: could not find totals in 18661",
+  "2026-11-26: could not find totals in 18619",
+  "2026-11-24: could not find totals in 18525",
   "2026-11-21: could not find totals in 18473",
   "2026-11-20: could not find totals in 18432",
   "2026-11-19: could not find totals in 18393"
